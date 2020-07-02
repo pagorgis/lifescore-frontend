@@ -1,6 +1,7 @@
 <template>
   <div id="score-list">
       <div v-bind:key="livescore.fixtureId" v-for="livescore in livescores">
+        <h2 v-if="!leagues.includes(livescore.leagueName)">{{livescore.leagueName}}</h2>
         <ScoreListItem v-bind:livescore="livescore" />
       </div>
   </div>
@@ -14,7 +15,26 @@ export default {
   components: {
     ScoreListItem
   },
-  props: ["livescores"]
+  props: ["livescores"],
+  data() {
+    return {
+      leagues: []
+    }
+  },
+  methods: {
+    checkIfLeagueExists(leagueName) {
+      
+      if(!this.leagues.includes(leagueName)) {
+        this.leagues.push(leagueName);
+        console.log("true");
+        return true;
+      } else {
+        console.log("false");
+        return false;
+      }
+    }
+  }
+  
 }
 </script>
 

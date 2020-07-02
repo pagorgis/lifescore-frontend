@@ -24,7 +24,7 @@ export default {
     return {
       livescores: [
         {
-          fixtureId: 214350,
+          fixtureId: 214351,
           leagueId: 775, 
           leagueName: "Primera Division",
           eventTimestamp: 1593624600,
@@ -185,6 +185,10 @@ export default {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 300;
   }
 
   .site-header {
