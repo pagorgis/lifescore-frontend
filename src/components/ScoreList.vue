@@ -1,8 +1,10 @@
 <template>
   <div id="score-list">
-      <div v-bind:key="livescore.fixtureId" v-for="livescore in livescores">
-        <h2 v-if="!leagues.includes(livescore.leagueName)">{{livescore.leagueName}}</h2>
-        <ScoreListItem v-bind:livescore="livescore" />
+      <div v-bind:key="league" v-for="league in leagues">
+        <h2>{{league}}</h2>
+        <div v-bind:key="livescore.fixtureId" v-for="livescore in livescores">
+          <ScoreListItem v-bind:livescore="livescore" v-if="league === livescore.leagueName"/>
+        </div>
       </div>
   </div>
 </template>
@@ -22,16 +24,20 @@ export default {
     }
   },
   methods: {
-    checkIfLeagueExists(leagueName) {
-      
-      if(!this.leagues.includes(leagueName)) {
-        this.leagues.push(leagueName);
-        console.log("true");
-        return true;
-      } else {
-        console.log("false");
-        return false;
+    checkOngoingLeagues(data) {
+      for(let i = 0; i < data.length; i++) {
+        if(!this.leagues.includes(data[i].leagueName)) {
+          this.leagues.push(data[i].leagueName);
+        }
       }
+    }
+  },
+  created() {
+    this.checkOngoingLeagues(this.livescores)
+  },
+  watch: {
+    livescores: function(newVal, oldVal) {
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal);
     }
   }
   
