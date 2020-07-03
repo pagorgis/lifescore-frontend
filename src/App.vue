@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1 class="site-header">LIFESCORE</h1>
+    <router-link to="/standings">Standings</router-link>
     <div class="leagues-container">
         <img class="league-img" src="./assets/uk.png" alt="Premier League">
         <img class="league-img" src="./assets/spain.png" alt="Primera Division">
@@ -8,17 +9,16 @@
         <img class="league-img" src="./assets/germany.png" alt="Bundesliga">
         <img class="league-img" src="./assets/sweden.png" alt="Allsvenskan">
     </div>
-    <ScoreList v-bind:livescores="livescores"/>
+    <router-view :livescores="livescores"/>
   </div>
 </template>
 
 <script>
-import ScoreList from './components/ScoreList.vue';
 
 export default {
   name: 'App',
   components: {
-    ScoreList
+    
   },
   data() {
     return {
@@ -161,7 +161,7 @@ export default {
               player: "A. Villalibre",
               assist: "U. Lopez",
               type: "subst",
-              detail:"U. Lopez"
+              detail: "U. Lopez"
             }
           ]
         }
@@ -171,6 +171,7 @@ export default {
 }
 
 </script>
+
 
 <style>
 
