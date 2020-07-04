@@ -1,5 +1,5 @@
 <template>
-  <div id="score-item">
+  <div class="score-item">
       <h3 class="home-team-name">{{livescore.homeTeam.teamName}}</h3>
       <h3 class="score-line">{{livescore.goalsHomeTeam}}-{{livescore.goalsAwayTeam}}<br><span class="elapsed">{{livescore.elapsed}}'</span></h3>
       <h3 class="away-team-name">{{livescore.awayTeam.teamName}}</h3>
@@ -19,17 +19,17 @@ export default {
 
 <style scoped>
 
-  #score-item {
+  .score-item {
       display: flex;
       justify-content: space-between;
-      width: 80%;
+      width: 50%;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
   }
 
   .elapsed {
-    color: greenyellow;
+    color: #44D073;
   }
 
   .home-team-name, .away-team-name {
@@ -43,6 +43,12 @@ export default {
   }
   .score-line {
     width: 20%;
+  }
+
+  @media screen and (max-width: 768px) {
+    #score-item {
+      width: 96%;
+    }
   }
 
 </style>

@@ -87,7 +87,7 @@ export default {
     text-decoration: underline;
   }
   .elapsed {
-    color: greenyellow;
+    color: #44D073;
   }
   .home-team-name, .away-team-name, .home-team-side, .away-team-side {
     width: 40%;

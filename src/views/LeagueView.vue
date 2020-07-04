@@ -1,7 +1,8 @@
 <template>
   <div id="league">
-    <Standings v-bind:standings="standings" />
-    <ScoreList v-bind:livescores="livescores" v-if="false"/>
+    <Standings v-bind:standings="standings" v-if="false"/>
+    <ScoreList v-bind:livescores="livescores" />
+    <NextGamesList v-bind:nextgames="nextgames" />
   </div>
 </template>
 
@@ -9,14 +10,16 @@
 <script>
 import Standings from '../components/Standings.vue';
 import ScoreList from '../components/ScoreList.vue';
+import NextGamesList from '../components/NextGamesList.vue';
 
 export default {
   name: 'LeagueView',
   components: {
-    ScoreList,
     Standings,
+    ScoreList,
+    NextGamesList,
   },
-  props: ["livescores", "standings"],
+  props: ["standings", "livescores", "nextgames"],
 }
 </script>
 

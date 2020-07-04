@@ -9,7 +9,7 @@
         <img class="league-img" src="./assets/germany.png" alt="Bundesliga">
         <img class="league-img" src="./assets/sweden.png" alt="Allsvenskan">
     </div>
-    <router-view :livescores="livescores" :standings="standings"/>
+    <router-view :livescores="livescores" :standings="standings" :nextgames="nextgames"/>
   </div>
 </template>
 
@@ -230,6 +230,65 @@ export default {
           goalsAgainst: 41,
           goalsDiff: 14,
           points: 54
+        },
+      ],
+      nextgames: [
+        {
+          fixtureId: 157334,
+          leagueId: 524,
+          leagueName: "Premier League",
+          eventDate: 1593630900000,
+          eventTimestamp: 1593630900,
+          round: "Regular Season - 32",
+          status: "Not Started",
+          homeTeam: {
+            teamId: 48,
+            teamName: "West Ham",
+            teamLogo: "https://media.api-sports.io/football/teams/48.png"
+          },
+          awayTeam: {
+            teamId: 49,
+            teamName: "Chelsea",
+            teamLogo: "https://media.api-sports.io/football/teams/49.png"
+          }
+        },
+        {
+          fixtureId: 157332,
+          leagueId: 524,
+          leagueName: "Premier League",
+          eventDate: 1593709200000,
+          eventTimestamp: 1593709200,
+          round: "Regular Season - 32",
+          status: "Not Started",
+          homeTeam: {
+            teamId: 62,
+            teamName: "Sheffield Utd",
+            teamLogo: "https://media.api-sports.io/football/teams/62.png"
+          },
+          awayTeam: {
+            teamId: 47,
+            teamName: "Tottenham",
+            teamLogo: "https://media.api-sports.io/football/teams/47.png"
+          }
+        },
+        {
+          fixtureId: 157341,
+          leagueId: 524,
+          leagueName: "Premier League",
+          eventDate: 1593862200000,
+          eventTimestamp: 1593862200,
+          round: "Regular Season - 33",
+          status: "Not Started",
+          homeTeam: {
+            teamId: 71,
+            teamName: "Norwich",
+            teamLogo: "https://media.api-sports.io/football/teams/71.png"
+          },
+          awayTeam: {
+            teamId: 51,
+            teamName: "Brighton",
+            teamLogo: "https://media.api-sports.io/football/teams/51.png"
+          }
         },
       ]
     }
