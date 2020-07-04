@@ -9,7 +9,7 @@
         <img class="league-img" src="./assets/germany.png" alt="Bundesliga">
         <img class="league-img" src="./assets/sweden.png" alt="Allsvenskan">
     </div>
-    <router-view :livescores="livescores"/>
+    <router-view :livescores="livescores" :standings="standings"/>
   </div>
 </template>
 
@@ -165,6 +165,72 @@ export default {
             }
           ]
         }
+      ],
+      standings: [
+        {
+          rank: 1,
+          teamId: 40,
+          teamName: "Liverpool",
+          teamLogo: "https://media.api-sports.io/football/teams/40.png",
+          group: "Premier League",
+          form: "WDWLW",
+          gamesPlayed: 31,
+          wins: 28,
+          draws: 2,
+          losses: 1,
+          goalsFor: 70,
+          goalsAgainst: 21,
+          goalsDiff: 49,
+          points: 86
+        },
+        {
+          rank: 2,
+          teamId: 50,
+          teamName: "Manchester City",
+          teamLogo: "https://media.api-sports.io/football/teams/50.png",
+          group: "Premier League",
+          form: "LWWLW",
+          gamesPlayed: 31,
+          wins: 20,
+          draws: 3,
+          losses: 8,
+          goalsFor: 77,
+          goalsAgainst: 33,
+          goalsDiff: 44,
+          points: 63
+        },
+        {
+          rank: 3,
+          teamId: 46,
+          teamName: "Leicester",
+          teamLogo: "https://media.api-sports.io/football/teams/46.png",
+          group: "Premier League",
+          form: "DDWLL",
+          gamesPlayed: 31,
+          wins: 16,
+          draws: 7,
+          losses: 8,
+          goalsFor: 59,
+          goalsAgainst: 29,
+          goalsDiff: 30,
+          points: 55
+        },
+        {
+          rank: 4,
+          teamId: 49,
+          teamName: "Chelsea",
+          teamLogo: "https://media.api-sports.io/football/teams/49.png",
+          group: "Premier League",
+          form: "WWWDW",
+          gamesPlayed: 31,
+          wins: 16,
+          draws: 6,
+          losses: 9,
+          goalsFor: 55,
+          goalsAgainst: 41,
+          goalsDiff: 14,
+          points: 54
+        },
       ]
     }
   }

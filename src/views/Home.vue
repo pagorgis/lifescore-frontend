@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="livescore-games">
     <ScoreList v-bind:livescores="livescores"/>
   </div>
 </template>

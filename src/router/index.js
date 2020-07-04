@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Standings from '../views/Standings.vue'
+import LeagueView from '../views/LeagueView.vue'
 import LiveGameDetails from '../views/LiveGameDetails.vue'
 
 
@@ -13,9 +13,9 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/standings/:id',
-    name: 'Standings',
-    component: Standings,
+    path: '/league/:id',
+    name: 'League',
+    component: LeagueView,
   },
   {
     path: '/livegame/:id',

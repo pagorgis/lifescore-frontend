@@ -2,9 +2,9 @@
   <div>
     <h2 class="league-name">{{livescore_obj.leagueName}}</h2>
     <div id="score-details">
-        <h2 class="home-team-name">{{livescore_obj.homeTeam.teamName}}</h2>
+        <h2 class="home-team-name">{{livescore_obj.homeTeam.teamName.toUpperCase()}}</h2>
         <h2 class="score-line">{{livescore_obj.goalsHomeTeam}}-{{livescore_obj.goalsAwayTeam}}<br><span class="elapsed">{{livescore_obj.elapsed}}'</span></h2>
-        <h2 class="away-team-name">{{livescore_obj.awayTeam.teamName}}</h2>
+        <h2 class="away-team-name">{{livescore_obj.awayTeam.teamName.toUpperCase()}}</h2>
     </div>
     <div class="event-details" v-bind:key="index" v-for="(event, index) in livescore_obj.events">
       <h3 class="home-team-side" v-if="livescore_obj.homeTeam.teamId === event.teamId">{{event.player}}<br><span class="assist" v-if="event.assist !== null">{{event.assist}}</span></h3>
@@ -76,6 +76,9 @@ export default {
       margin-left: auto;
       margin-right: auto;
   }
+  .event-details {
+    margin-bottom: 0.5em;
+  }
   h3 {
     margin: 1em;
   }
@@ -101,7 +104,7 @@ export default {
   .event-img {
     width: 5%;
     min-width: 2em;
-    margin-top: 1em;
+    margin-top: 0em;
   }
   .event-elapsed {
     margin: 0.1em;
@@ -115,7 +118,7 @@ export default {
       width: 96%;
     }
     h3 {
-      margin: 0.5em;
+      margin: 0em;
     }
   }
 
