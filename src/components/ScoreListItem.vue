@@ -22,7 +22,7 @@ export default {
   .score-item {
       display: flex;
       justify-content: space-between;
-      width: 50%;
+      width: 80%;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;

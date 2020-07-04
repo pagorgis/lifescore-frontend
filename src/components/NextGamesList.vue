@@ -1,6 +1,6 @@
 <template>
   <div id="score-list">
-    <h2>Upcoming fixtures current round {{ extractRound(nextgames[0]) }}</h2>
+    <h2>Upcoming fixtures - round {{ extractRound(nextgames[0]) }}</h2>
     <div v-bind:key="nextgame.fixtureId" v-for="nextgame in nextgames">
         <NextGamesListItem v-bind:nextgame="nextgame" v-if="league_id == nextgame.leagueId && extractRound(nextgames[0]) === extractRound(nextgame)" />
     </div>

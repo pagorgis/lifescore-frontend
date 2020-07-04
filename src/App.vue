@@ -9,7 +9,11 @@
         <img class="league-img" src="./assets/germany.png" alt="Bundesliga">
         <img class="league-img" src="./assets/sweden.png" alt="Allsvenskan">
     </div>
-    <router-view :livescores="livescores" :standings="standings" :nextgames="nextgames"/>
+    <router-view 
+      :livescores="livescores" 
+      :standings="standings"
+      :lastgames="lastgames" 
+      :nextgames="nextgames"/>
   </div>
 </template>
 
@@ -290,6 +294,71 @@ export default {
             teamLogo: "https://media.api-sports.io/football/teams/51.png"
           }
         },
+      ],
+      lastgames: [
+        {
+          fixtureId: 157336,
+          leagueId: 524,
+          leagueName: "Premier League",
+          eventDate: 1593889200000,
+          eventTimestamp: 1593889200,
+          round: "Regular Season - 33",
+          status: "Halftime",
+          homeTeam: {
+            teamId: 49,
+            teamName: "Chelsea",
+            teamLogo: "https://media.api-sports.io/football/teams/49.png"
+          },
+          awayTeam: {
+            teamId: 38,
+            teamName: "Watford",
+            teamLogo: "https://media.api-sports.io/football/teams/38.png"
+          },
+          goalsHomeTeam: 2,
+          goalsAwayTeam: 0
+        },
+        {
+          fixtureId: 157344,
+          leagueId: 524,
+          leagueName: "Premier League",
+          eventDate: 1593880200000,
+          eventTimestamp: 1593880200,
+          round: "Regular Season - 33",
+          status: "Match Finished",
+          homeTeam: {
+            teamId: 39,
+            teamName: "Wolves",
+            teamLogo: "https://media.api-sports.io/football/teams/39.png"
+          },
+          awayTeam: {
+            teamId: 42,
+            teamName: "Arsenal",
+            teamLogo: "https://media.api-sports.io/football/teams/42.png"
+          },
+          goalsHomeTeam: 0,
+          goalsAwayTeam: 2
+        },
+        {
+          fixtureId: 157337,
+          leagueId: 524,
+          leagueName: "Premier League",
+          eventDate: 1593871200000,
+          eventTimestamp: 1593871200,
+          round: "Regular Season - 33",
+          status: "Match Finished",
+          homeTeam: {
+            teamId: 46,
+            teamName: "Leicester",
+            teamLogo: "https://media.api-sports.io/football/teams/46.png"
+          },
+          awayTeam: {
+            teamId: 52,
+            teamName: "Crystal Palace",
+            teamLogo: "https://media.api-sports.io/football/teams/52.png"
+          },
+          goalsHomeTeam: 3,
+          goalsAwayTeam: 0
+        }
       ]
     }
   }

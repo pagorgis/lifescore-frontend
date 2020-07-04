@@ -1,28 +1,22 @@
 <template>
-  <div class="next-games-info">
-    <h3 class="home-team-name">{{ nextgame.homeTeam.teamName }}</h3>
-    <h3 class="event-date">{{ convertToDate(nextgame.eventTimestamp) }}</h3>
-    <h3 class="away-team-name">{{ nextgame.awayTeam.teamName }}</h3>
+  <div class="last-games-info">
+    <h3 class="home-team-name">{{ lastgame.homeTeam.teamName }}</h3>
+    <h3 class="score-line">{{lastgame.goalsHomeTeam}}-{{lastgame.goalsAwayTeam}}</h3>
+    <h3 class="away-team-name">{{ lastgame.awayTeam.teamName }}</h3>
   </div>
 </template>
 
 
 <script>
-import moment from 'moment'
 
 export default {
-  name: 'NextGamesListItem',
-  props: ["nextgame"],
+  name: 'LastGamesListItem',
+  props: ["lastgame"],
   data() {
     return {
       league_id: this.$route.params.id,
     }
   },
-  methods: {
-    convertToDate(timeStamp) {
-      return moment.unix(timeStamp).format('DD/MM/YYYY HH:mm');
-    }
-  }
 }
 
 </script>
@@ -30,7 +24,7 @@ export default {
 
 <style scoped>
 
-  .next-games-info {
+  .last-games-info {
       display: flex !important;
       justify-content: space-between;
       width: 80%;
@@ -57,9 +51,6 @@ export default {
     }
     h3 {
       margin: 0.4em 0;
-    }
-    .event-date {
-      font-size: 0.8em;
     }
   }
 
