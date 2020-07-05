@@ -13,7 +13,7 @@ export default {
   components: {
     ScoreList
   },
-  props: ["livescores"]
+  props: ["standings", "livescores", "nextgames", "lastgames"],
 }
 </script>
 

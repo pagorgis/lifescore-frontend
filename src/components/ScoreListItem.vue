@@ -1,7 +1,7 @@
 <template>
   <div class="score-item">
       <h3 class="home-team-name">{{livescore.homeTeam.teamName}}</h3>
-      <h3 class="score-line">{{livescore.goalsHomeTeam}}-{{livescore.goalsAwayTeam}}<br><span class="elapsed">{{livescore.elapsed}}'</span></h3>
+      <router-link class="link-to-fixture" v-bind:to="'/livegame/' + livescore.fixtureId"><h3 class="score-line">{{livescore.goalsHomeTeam}}-{{livescore.goalsAwayTeam}}<br><span class="elapsed">{{livescore.elapsed}}'</span></h3></router-link>
       <h3 class="away-team-name">{{livescore.awayTeam.teamName}}</h3>
   </div>
 </template>
@@ -44,10 +44,17 @@ export default {
   .score-line {
     width: 20%;
   }
+  .link-to-fixture {
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+  }
 
   @media screen and (max-width: 768px) {
     #score-item {
       width: 96%;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 

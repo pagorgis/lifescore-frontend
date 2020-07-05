@@ -1,6 +1,6 @@
 <template>
   <div id="standings">
-    <h2>Standings here</h2>
+    <h2>Standings</h2>
     <table class="league-table">
       <thead>
         <tr>
@@ -13,7 +13,7 @@
           <th class="desktop-only">GF</th>
           <th class="desktop-only">GA</th>
           <th>GD</th>
-          <th>Po</th>
+          <th>Points</th>
           <th class="desktop-only">Form</th>
         </tr>
       </thead>
@@ -82,7 +82,7 @@ export default {
     font-size: 1.5em;
   }
   .team-logo-table {
-    width: 3em;
+    width: 2.5em;
     vertical-align: middle;
     margin: 0.2em 0;
   }

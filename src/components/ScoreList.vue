@@ -25,19 +25,22 @@ export default {
   },
   methods: {
     checkOngoingLeagues(data) {
+      console.log(data);
       for(let i = 0; i < data.length; i++) {
         if(!this.leagues.includes(data[i].leagueName)) {
+          
           this.leagues.push(data[i].leagueName);
         }
       }
+      console.log(this.leagues);
     }
   },
   created() {
-    this.checkOngoingLeagues(this.livescores)
+    this.checkOngoingLeagues(this.livescores);
   },
   watch: {
-    livescores: function(newVal, oldVal) {
-      console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+    livescores: function() {
+      this.checkOngoingLeagues(this.livescores);
     }
   }
   

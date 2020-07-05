@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <h1 class="site-header">LIFESCORE</h1>
-    <router-link to="/standings">Standings</router-link>
     <div class="leagues-container">
         <img class="league-img" src="./assets/uk.png" alt="Premier League">
         <img class="league-img" src="./assets/spain.png" alt="Primera Division">
@@ -9,11 +8,11 @@
         <img class="league-img" src="./assets/germany.png" alt="Bundesliga">
         <img class="league-img" src="./assets/sweden.png" alt="Allsvenskan">
     </div>
-    <router-view 
+    <router-view
       :livescores="livescores" 
       :standings="standings"
       :lastgames="lastgames" 
-      :nextgames="nextgames"/>
+      :nextgames="nextgames" />
   </div>
 </template>
 
@@ -21,155 +20,49 @@
 
 export default {
   name: 'App',
-  components: {
-    
+  methods: {
+    timerBoy() {
+      //setInterval(() => console.log("Tick"), 10000);
+      fetch("http://localhost:3000/lastgames/test")
+        .then(data => data.json())
+        .then(jsondata => {
+          console.log(jsondata);
+          this.lastgames = jsondata;
+        })
+        .catch(err => console.log(err));
+
+      fetch("http://localhost:3000/standings/test")
+        .then(data => data.json())
+        .then(jsondata => {
+          console.log(jsondata);
+          this.standings = jsondata;
+        })
+        .catch(err => console.log(err));
+
+      fetch("http://localhost:3000/nextgames/test")
+        .then(data => data.json())
+        .then(jsondata => {
+          console.log(jsondata);
+          this.nextgames = jsondata;
+        })
+        .catch(err => console.log(err));
+
+      fetch("http://localhost:3000/livegames/test")
+        .then(data => data.json())
+        .then(jsondata => {
+          console.log(jsondata);
+          this.livescores = jsondata;
+        })
+        .catch(err => console.log(err));
+
+    }
+  },
+  created() {
+    this.timerBoy();
   },
   data() {
     return {
-      livescores: [
-        {
-          fixtureId: 214351,
-          leagueId: 775, 
-          leagueName: "Primera Division",
-          eventTimestamp: 1593624600,
-          round: "Regular Season - 33",
-          status: "Second Half",
-          elapsed: 74,
-          homeTeam: {
-            teamId: 532,
-            teamName: "Valencia",
-            teamLogo: "https://media.api-sports.io/football/teams/532.png",
-          },
-          awayTeam: {
-            teamId: 531,
-            teamName: "Athletic Club",
-            teamLogo: "https://media.api-sports.io/football/teams/531.png",
-          },
-          goalsHomeTeam: 0,
-          goalsAwayTeam: 2,
-          events: [
-            {
-              elapsed: 13,
-              teamId: 531,
-              player: "R. Garcia",
-              assist: "I. Williams",
-              type:"Goal",
-              detail:"Normal Goal"
-            },
-            {
-              elapsed: 47,
-              teamId: 531,
-              player: "R. Garcia",
-              assist:"I. Cordoba",
-              type:"Goal",
-              detail: "Normal Goal"
-            },
-            {
-              elapsed: 62,
-              teamId: 532,
-              player: "C. Soler",
-              assist: "G. Guedes",
-              type:"subst",
-              detail: "G. Guedes"
-            },
-            {
-              elapsed: 62,
-              teamId: 532,
-              player: "D. Cheryshev",
-              assist: "F. Torres",
-              type: "subst",
-              detail: "F. Torres"
-            },
-            {
-              elapsed: 66,
-              teamId: 531,
-              player: "M. Vesga",
-              assist: "I. Williams",
-              type: "subst",
-              detail:"I. Williams"
-            },
-            {
-              elapsed: 66,
-              teamId: 531,
-              player: "A. Villalibre",
-              assist: "U. Lopez",
-              type: "subst",
-              detail:"U. Lopez"
-            }
-          ]
-        },
-        {
-          fixtureId: 214350,
-          leagueId: 775, 
-          leagueName: "Primera Division",
-          eventTimestamp: 1593624600,
-          round: "Regular Season - 33",
-          status: "Second Half",
-          elapsed: 74,
-          homeTeam: {
-            teamId: 532,
-            teamName: "Valencia",
-            teamLogo: "https://media.api-sports.io/football/teams/532.png",
-          },
-          awayTeam: {
-            teamId: 531,
-            teamName: "Athletic Club",
-            teamLogo: "https://media.api-sports.io/football/teams/531.png",
-          },
-          goalsHomeTeam: 0,
-          goalsAwayTeam: 2,
-          events: [
-            {
-              elapsed: 13,
-              teamId: 531,
-              player: "R. Garcia",
-              assist: "I. Williams",
-              type:"Goal",
-              detail:"Normal Goal"
-            },
-            {
-              elapsed: 47,
-              teamId: 531,
-              player: "R. Garcia",
-              assist:"I. Cordoba",
-              type:"Goal",
-              detail: "Normal Goal"
-            },
-            {
-              elapsed: 62,
-              teamId: 532,
-              player: "C. Soler",
-              assist: "G. Guedes",
-              type:"subst",
-              detail: "G. Guedes"
-            },
-            {
-              elapsed: 62,
-              teamId: 532,
-              player: "D. Cheryshev",
-              assist: "F. Torres",
-              type: "subst",
-              detail: "F. Torres"
-            },
-            {
-              elapsed: 66,
-              teamId: 531,
-              player: "M. Vesga",
-              assist: "I. Williams",
-              type: "subst",
-              detail:"I. Williams"
-            },
-            {
-              elapsed: 66,
-              teamId: 531,
-              player: "A. Villalibre",
-              assist: "U. Lopez",
-              type: "subst",
-              detail: "U. Lopez"
-            }
-          ]
-        }
-      ],
+      livescores: [],
       standings: [
         {
           rank: 1,

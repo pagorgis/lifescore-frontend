@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     convertToDate(timeStamp) {
-      return moment.unix(timeStamp).format('DD/MM/YYYY HH:mm');
+      return moment.unix(timeStamp).format('DD/MM/YY HH:mm');
     }
   }
 }

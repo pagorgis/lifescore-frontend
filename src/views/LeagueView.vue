@@ -51,6 +51,8 @@ export default {
 
     .games-list, .standings-flex {
       width: 96%;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
