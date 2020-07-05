@@ -1,9 +1,9 @@
 <template>
   <div id="score-list">
       <div v-bind:key="league" v-for="league in leagues">
-        <h2>{{league}}</h2>
-        <div v-bind:key="livescore.fixtureId" v-for="livescore in livescores">
-          <ScoreListItem v-bind:livescore="livescore" v-if="league === livescore.leagueName"/>
+        <h2 class="league-name">{{league}}</h2>
+        <div v-bind:key="livegame.fixtureId" v-for="livegame in livegames">
+          <ScoreListItem v-bind:livegame="livegame" v-if="league === livegame.leagueName"/>
         </div>
       </div>
   </div>
@@ -17,7 +17,7 @@ export default {
   components: {
     ScoreListItem
   },
-  props: ["livescores"],
+  props: ["livegames"],
   data() {
     return {
       leagues: []
@@ -36,11 +36,11 @@ export default {
     }
   },
   created() {
-    this.checkOngoingLeagues(this.livescores);
+    this.checkOngoingLeagues(this.livegames);
   },
   watch: {
-    livescores: function() {
-      this.checkOngoingLeagues(this.livescores);
+    livegames: function() {
+      this.checkOngoingLeagues(this.livegames);
     }
   }
   
@@ -48,5 +48,10 @@ export default {
 </script>
 
 <style scoped>
+
+  .league-name {
+    margin: 0.2em;
+    text-decoration: underline;
+  }
 
 </style>

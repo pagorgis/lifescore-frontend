@@ -1,8 +1,8 @@
 <template>
   <div class="score-item">
-      <h3 class="home-team-name">{{livescore.homeTeam.teamName}}</h3>
-      <router-link class="link-to-fixture" v-bind:to="'/livegame/' + livescore.fixtureId"><h3 class="score-line">{{livescore.goalsHomeTeam}}-{{livescore.goalsAwayTeam}}<br><span class="elapsed">{{livescore.elapsed}}'</span></h3></router-link>
-      <h3 class="away-team-name">{{livescore.awayTeam.teamName}}</h3>
+      <h3 class="home-team-name">{{livegame.homeTeam.teamName}}</h3>
+      <router-link class="link-to-fixture" v-bind:to="'/livegame/' + livegame.fixtureId"><h3 class="score-line">{{livegame.goalsHomeTeam}}-{{livegame.goalsAwayTeam}}<br><span class="elapsed">{{livegame.elapsed}}'</span></h3></router-link>
+      <h3 class="away-team-name">{{livegame.awayTeam.teamName}}</h3>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 
 export default {
   name: 'ScoreListItem',
-  props: ["livescore"]
+  props: ["livegame"]
 }
 
 </script>
@@ -27,11 +27,9 @@ export default {
       margin-left: auto;
       margin-right: auto;
   }
-
   .elapsed {
     color: #44D073;
   }
-
   .home-team-name, .away-team-name {
     width: 40%;
   }
@@ -51,7 +49,7 @@ export default {
   }
 
   @media screen and (max-width: 768px) {
-    #score-item {
+    .score-item {
       width: 96%;
       margin-left: auto;
       margin-right: auto;

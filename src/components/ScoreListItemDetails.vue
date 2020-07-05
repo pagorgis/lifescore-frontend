@@ -1,19 +1,19 @@
 <template>
   <div>
-    <h2 class="league-name">{{livescore_obj.leagueName}}</h2>
+    <h2 class="league-name">{{livegame_obj.leagueName}}</h2>
     <div id="score-details">
-        <h2 class="home-team-name">{{livescore_obj.homeTeam.teamName.toUpperCase()}}</h2>
-        <h2 class="score-line">{{livescore_obj.goalsHomeTeam}}-{{livescore_obj.goalsAwayTeam}}<br><span class="elapsed">{{livescore_obj.elapsed}}'</span></h2>
-        <h2 class="away-team-name">{{livescore_obj.awayTeam.teamName.toUpperCase()}}</h2>
+        <h2 class="home-team-name">{{livegame_obj.homeTeam.teamName.toUpperCase()}}</h2>
+        <h2 class="score-line">{{livegame_obj.goalsHomeTeam}}-{{livegame_obj.goalsAwayTeam}}<br><span class="elapsed">{{livegame_obj.elapsed}}'</span></h2>
+        <h2 class="away-team-name">{{livegame_obj.awayTeam.teamName.toUpperCase()}}</h2>
     </div>
-    <div class="event-details" v-bind:key="index" v-for="(event, index) in livescore_obj.events">
-      <h3 class="home-team-side" v-if="livescore_obj.homeTeam.teamId === event.teamId">{{event.player}}<br><span class="assist" v-if="event.assist !== null">{{event.assist}}</span></h3>
+    <div class="event-details" v-bind:key="index" v-for="(event, index) in livegame_obj.events">
+      <h3 class="home-team-side" v-if="livegame_obj.homeTeam.teamId === event.teamId">{{event.player}}<br><span class="assist" v-if="event.assist !== null">{{event.assist}}</span></h3>
       <h3 class="home-team-side" v-else></h3>
       <div class="event-img-div">
         <img class="event-img" :src="decideEventImg(event.type, event.detail)" alt="event-img">
         <h3 class="event-elapsed">{{event.elapsed}}'</h3>
       </div>
-      <h3 class="away-team-side" v-if="livescore_obj.awayTeam.teamId === event.teamId">{{event.player}}<br><span class="assist" v-if="event.assist !== null">{{event.assist}}</span></h3>
+      <h3 class="away-team-side" v-if="livegame_obj.awayTeam.teamId === event.teamId">{{event.player}}<br><span class="assist" v-if="event.assist !== null">{{event.assist}}</span></h3>
       <h3 class="away-team-side" v-else></h3>
     </div>
   </div>
@@ -24,34 +24,33 @@
 
 export default {
   name: 'ScoreListItemDetails',
-  props: ["livescores"],
+  props: ["livegames"],
   data() {
       return {
-          livescore_id: this.$route.params.id,
-          livescore_obj: null
+          livegame_id: this.$route.params.id,
+          livegame_obj: null
       }
   },
   created() {
-    for (let i = 0; i < this.livescores.length; i++) {
-      console.log(this.livescores[i].fixtureId);
-      console.log(this.livescores[i].events.length);
-      if (this.livescores[i].fixtureId == this.livescore_id) {
-        this.livescore_obj = this.livescores[i];
+    for (let i = 0; i < this.livegames.length; i++) {
+      if (this.livegames[i].fixtureId == this.livegame_id) {
+        this.livegame_obj = this.livegames[i];
         break;
       }
     }
   },
   methods: {
     decideEventImg(eventType, eventDetail) {
+      console.log(eventType + " | " + eventDetail);
       switch (eventType) {
         case "Goal":
           return require("../assets/soccer.png");
         case "subst":
           return require("../assets/substitution.png");
         case "Card":
-          if (eventDetail === "Yellow card") {
+          if (eventDetail.toLowerCase() === "yellow card") {
             return require("../assets/yellow-card.png");
-          } else if (eventDetail === "Red card") {
+          } else if (eventDetail.toLowerCase() === "red card") {
             return require("../assets/red-card.png");
           } else {
             return null;

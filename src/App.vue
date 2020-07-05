@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 class="site-header">LIFESCORE</h1>
+    <h1 class="site-header"><router-link class="home-link" to="/">LIFESCORE</router-link></h1>
     <div class="leagues-container">
         <img class="league-img" src="./assets/uk.png" alt="Premier League">
         <img class="league-img" src="./assets/spain.png" alt="Primera Division">
@@ -9,7 +9,7 @@
         <img class="league-img" src="./assets/sweden.png" alt="Allsvenskan">
     </div>
     <router-view
-      :livescores="livescores" 
+      :livegames="livegames" 
       :standings="standings"
       :lastgames="lastgames" 
       :nextgames="nextgames" />
@@ -51,7 +51,7 @@ export default {
         .then(data => data.json())
         .then(jsondata => {
           console.log(jsondata);
-          this.livescores = jsondata;
+          this.livegames = jsondata;
         })
         .catch(err => console.log(err));
 
@@ -62,7 +62,7 @@ export default {
   },
   data() {
     return {
-      livescores: [],
+      livegames: [],
       standings: [
         {
           rank: 1,
@@ -274,28 +274,28 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
-
   h1,h2,h3,h4,h5,h6 {
     font-weight: 300;
   }
-
+  .home-link {
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+  }
   .site-header {
     font-size: 3em;
     font-weight: 300;
   }
-
   .leagues-container {
     display: inline-flex;
     justify-content: center;
   }
-
   .league-img {
     width: 10%;
     min-width: 4em;
     margin: 0 0.3em;
     opacity: 0.6;
   }
-
   .league-img:hover {
     transition: 0.2s;
     opacity: 1;

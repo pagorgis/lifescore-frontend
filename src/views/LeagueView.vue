@@ -5,7 +5,7 @@
     </div>
     <div class="games-list">
       <LastGamesList v-bind:lastgames="lastgames" />
-      <ScoreList v-bind:livescores="livescores" />
+      <LiveGamesList v-bind:livegames="livegames" />
       <NextGamesList v-bind:nextgames="nextgames" />
     </div>
   </div>
@@ -15,7 +15,7 @@
 <script>
 import Standings from '../components/Standings.vue';
 import LastGamesList from '../components/LastGamesList.vue';
-import ScoreList from '../components/ScoreList.vue';
+import LiveGamesList from '../components/LiveGamesList.vue';
 import NextGamesList from '../components/NextGamesList.vue';
 
 export default {
@@ -23,10 +23,10 @@ export default {
   components: {
     Standings,
     LastGamesList,
-    ScoreList,
+    LiveGamesList,
     NextGamesList,
   },
-  props: ["standings", "livescores", "nextgames", "lastgames"],
+  props: ["standings", "livegames", "nextgames", "lastgames"],
 }
 </script>
 
