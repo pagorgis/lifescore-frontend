@@ -1,5 +1,5 @@
 <template>
-  <div id="standings">
+  <div id="standings" v-if="standings">
     <h2>Standings</h2>
     <table class="league-table">
       <thead>
@@ -17,7 +17,7 @@
           <th class="desktop-only">Form</th>
         </tr>
       </thead>
-      <tbody v-bind:key="standing.teamId" v-for="standing in standings">
+      <tbody v-bind:key="standing.teamId" v-for="standing in standings[findStandingsIndex()].standings">
         <tr>
           <td>{{ standing.rank }}</td>
           <td><img class="team-logo-table" v-bind:src="standing.teamLogo" v-bind:alt="standing.teamName"></td>
@@ -58,6 +58,16 @@ export default {
           return "form-loss";
         default:
           return "";
+      }
+    },
+    findStandingsIndex() {
+      if(this.standings) {
+        for (let i = 0; i < this.standings.length; i++) {
+          if(this.standings[i].leagueId == this.league_id) {
+            return i;
+          }
+        }
+        return null;
       }
     }
   }

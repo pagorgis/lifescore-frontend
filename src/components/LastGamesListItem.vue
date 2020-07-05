@@ -46,7 +46,7 @@ export default {
   }
 
   @media screen and (max-width: 768px) {
-    #score-details, .event-details {
+    .last-games-info {
       width: 96%;
     }
     h3 {

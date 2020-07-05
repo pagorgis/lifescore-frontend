@@ -52,7 +52,7 @@ export default {
   }
 
   @media screen and (max-width: 768px) {
-    #score-details, .event-details {
+    .next-games-info {
       width: 96%;
     }
     h3 {
