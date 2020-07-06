@@ -26,14 +26,12 @@ export default {
   },
   methods: {
     checkOngoingLeagues(data) {
-      console.log(data);
       for(let i = 0; i < data.length; i++) {
         if(!this.leagues.includes(data[i].leagueName)) {
           
           this.leagues.push(data[i].leagueName);
         }
       }
-      console.log(this.leagues);
     }
   },
   created() {

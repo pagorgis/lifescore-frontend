@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     decideEventImg(eventType, eventDetail) {
-      console.log(eventType + " | " + eventDetail);
       switch (eventType) {
         case "Goal":
           return require("../assets/soccer.png");

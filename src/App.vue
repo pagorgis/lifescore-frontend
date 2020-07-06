@@ -56,7 +56,7 @@ export default {
       fetch("http://localhost:3000/nextgames/test")
         .then(data => data.json())
         .then(jsondata => {
-          console.log(jsondata);
+
           this.nextgames = jsondata;
         })
         .catch(err => console.log(err));
