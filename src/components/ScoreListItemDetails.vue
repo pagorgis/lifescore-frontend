@@ -7,7 +7,7 @@
         <h2 class="away-team-name">{{livegame_obj.awayTeam.teamName.toUpperCase()}}</h2>
     </div>
     <div class="event-details" v-bind:key="index" v-for="(event, index) in livegame_obj.events">
-      <h3 class="home-team-side" v-if="livegame_obj.homeTeam.teamId === event.teamId">{{event.player}}<br><span class="assist" v-if="event.assist !== null">{{event.assist}}</span></h3>
+      <h3 class="home-team-side" v-if="livegame_obj.homeTeam.teamId === event.teamId">{{event.player}}<br><span class="assist" v-if="event.assist !== null">{{event.assist}}</span><span v-else style="visibility: hidden">.</span></h3>
       <h3 class="home-team-side" v-else></h3>
       <div class="event-img-div">
         <img class="event-img" :src="decideEventImg(event.type, event.detail)" alt="event-img">

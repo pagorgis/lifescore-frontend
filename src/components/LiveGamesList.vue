@@ -1,6 +1,6 @@
 <template>
   <div id="score-list" v-if="livegames.length">
-    <h2>Ongoing games</h2>
+    <h2><u>LIVE games</u></h2>
     <div v-bind:key="livegame.fixtureId" v-for="livegame in livegames">
         <LiveGamesListItem v-bind:livegame="livegame" v-if="league_id == livegame.leagueId" />
     </div>
@@ -20,6 +20,13 @@ export default {
   data() {
     return {
       league_id: this.$route.params.id,
+    }
+  },
+  watch: {
+    $route(to, from) {
+      if(to.params.id !== from.params.id) {
+        this.league_id = this.$route.params.id;
+      }
     }
   }
 }

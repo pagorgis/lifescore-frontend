@@ -1,6 +1,6 @@
 <template>
   <div id="score-list" v-if="nextgames.length">
-    <h2>Upcoming fixtures - round {{ extractRound(nextgames[leagueIndex].nextgames[0]) }}</h2>
+    <h2><u>Upcoming fixtures - round {{ extractRound(nextgames[leagueIndex].nextgames[0]) }}</u></h2>
     <div v-bind:key="nextgame.fixtureId" v-for="nextgame in nextgames[leagueIndex].nextgames">
         <NextGamesListItem v-bind:nextgame="nextgame" 
         v-if="league_id == nextgame.leagueId && 
@@ -39,7 +39,6 @@ export default {
       if(this.nextgames.length) {
         for (let i = 0; i < this.nextgames.length; i++) {
           if(this.nextgames[i].leagueId == this.league_id) {
-            console.log(this.nextgames[i].leagueId);
             this.leagueIndex = i;
           }
         }
@@ -53,6 +52,12 @@ export default {
   watch: {
     nextgames: function() {
       this.findLeagueIndex();
+    },
+    $route(to, from) {
+      if(to.params.id !== from.params.id) {
+        this.league_id = this.$route.params.id;
+        this.findLeagueIndex();
+      }
     }
   }
 }

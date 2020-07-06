@@ -1,6 +1,6 @@
 <template>
   <div id="standings" v-if="standings.length">
-    <h2>Standings</h2>
+    <h2><u>Standings</u></h2>
     <table class="league-table">
       <thead>
         <tr>
@@ -69,6 +69,13 @@ export default {
           }
         }
         return null;
+      }
+    }
+  },
+  watch: {
+    $route(to, from) {
+      if(to.params.id !== from.params.id) {
+        this.league_id = this.$route.params.id;
       }
     }
   }

@@ -2,11 +2,16 @@
   <div id="app">
     <h1 class="site-header"><router-link class="home-link" to="/">LIFESCORE</router-link></h1>
     <div class="leagues-container">
-        <img class="league-img" src="./assets/uk.png" alt="Premier League">
-        <img class="league-img" src="./assets/spain.png" alt="Primera Division">
-        <img class="league-img" src="./assets/italy.png" alt="Serie A">
-        <img class="league-img" src="./assets/germany.png" alt="Bundesliga">
-        <img class="league-img" src="./assets/sweden.png" alt="Allsvenskan">
+        <router-link to="/league/524" tag="img" :src="require('./assets/uk.png')" alt="Premier League" 
+            :class="currentLeague === 524 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(524)"></router-link>
+        <router-link to="/league/775" tag="img" :src="require('./assets/spain.png')" alt="Primera Division"
+            :class="currentLeague === 775 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(775)"></router-link>
+        <router-link to="/league/891" tag="img" :src="require('./assets/italy.png')" alt="Serie A"
+            :class="currentLeague === 891 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(891)"></router-link>
+        <router-link to="/league/754" tag="img" :src="require('./assets/germany.png')" alt="Bundesliga"
+            :class="currentLeague === 754 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(754)"></router-link>
+        <router-link to="/league/1329" tag="img" :src="require('./assets/sweden.png')" alt="Allsvenskan"
+            :class="currentLeague === 1329 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(1329)"></router-link>
     </div>
     <router-view
       :livegames="livegames" 
@@ -20,6 +25,15 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      livegames: [],
+      standings: [],
+      nextgames: [],
+      lastgames: [],
+      currentLeague: null
+    }
+  },
   methods: {
     timerBoy() {
       //setInterval(() => console.log("Tick"), 10000);
@@ -55,18 +69,13 @@ export default {
         })
         .catch(err => console.log(err));
 
+    },
+    changeLeague: function(leagueId) {
+      this.currentLeague = leagueId;
     }
   },
   created() {
     this.timerBoy();
-  },
-  data() {
-    return {
-      livegames: [],
-      standings: [],
-      nextgames: [],
-      lastgames: []
-    }
   }
 }
 
@@ -107,12 +116,16 @@ export default {
     width: 10%;
     min-width: 4em;
     margin: 0 0.3em;
-    opacity: 0.6;
+    opacity: 0.5;
+    transition: 0.2s;
   }
   .league-img:hover {
     transition: 0.2s;
     opacity: 1;
     cursor: pointer;
+  }
+  .active-league {
+    opacity: 1;
   }
 
 </style>

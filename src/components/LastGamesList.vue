@@ -1,6 +1,6 @@
 <template>
   <div id="score-list" v-if="lastgames.length">
-    <h2>Finished games, current round {{ extractRound(lastgames[leagueIndex].lastgames[0]) }}</h2>
+    <h2><u>Finished games - round {{ extractRound(lastgames[leagueIndex].lastgames[0]) }}</u></h2>
     <div v-bind:key="lastgame.fixtureId" v-for="lastgame in lastgames[leagueIndex].lastgames">
         <LastGamesListItem 
           v-bind:lastgame="lastgame" 
@@ -41,7 +41,6 @@ export default {
       if(this.lastgames.length) {
         for (let i = 0; i < this.lastgames.length; i++) {
           if(this.lastgames[i].leagueId == this.league_id) {
-            console.log(this.lastgames[i].leagueId);
             this.leagueIndex = i;
           }
         }
@@ -55,6 +54,12 @@ export default {
   watch: {
     lastgames: function() {
       this.findLeagueIndex();
+    },
+    $route(to, from) {
+      if(to.params.id !== from.params.id) {
+        this.league_id = this.$route.params.id;
+        this.findLeagueIndex();
+      }
     }
   }
 }
