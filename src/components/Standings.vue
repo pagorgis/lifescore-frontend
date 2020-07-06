@@ -1,5 +1,5 @@
 <template>
-  <div id="standings" v-if="standings">
+  <div id="standings" v-if="standings.length">
     <h2>Standings</h2>
     <table class="league-table">
       <thead>
@@ -36,6 +36,7 @@
       </tbody>
     </table>
   </div>
+  <div v-else>Loading</div>
 </template>
 
 <script>

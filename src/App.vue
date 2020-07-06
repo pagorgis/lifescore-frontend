@@ -34,7 +34,7 @@ export default {
       fetch("http://localhost:3000/standings/test")
         .then(data => data.json())
         .then(jsondata => {
-          console.log(jsondata);
+          
           this.standings = jsondata;
         })
         .catch(err => console.log(err));
@@ -42,7 +42,7 @@ export default {
       fetch("http://localhost:3000/nextgames/test")
         .then(data => data.json())
         .then(jsondata => {
-          console.log(jsondata);
+          
           this.nextgames = jsondata;
         })
         .catch(err => console.log(err));
@@ -50,7 +50,7 @@ export default {
       fetch("http://localhost:3000/livegames/test")
         .then(data => data.json())
         .then(jsondata => {
-          console.log(jsondata);
+          
           this.livegames = jsondata;
         })
         .catch(err => console.log(err));

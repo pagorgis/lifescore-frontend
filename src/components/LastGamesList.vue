@@ -1,14 +1,15 @@
 <template>
-  <div id="score-list">
-    <h2>Finished games - round {{ extractRound(lastgames[0]) }}</h2>
-    <div v-bind:key="lastgame.fixtureId" v-for="lastgame in lastgames">
+  <div id="score-list" v-if="lastgames.length">
+    <h2>Finished games, current round {{ extractRound(lastgames[leagueIndex].lastgames[0]) }}</h2>
+    <div v-bind:key="lastgame.fixtureId" v-for="lastgame in lastgames[leagueIndex].lastgames">
         <LastGamesListItem 
           v-bind:lastgame="lastgame" 
           v-if="league_id == lastgame.leagueId && 
-            extractRound(lastgames[0]) === extractRound(lastgame) &&
+            extractRound(lastgames[leagueIndex].lastgames[0]) === extractRound(lastgame) &&
             lastgame.status === 'Match Finished'" />
     </div>
   </div>
+  <div v-else>Not found</div>
 </template>
 
 <script>
@@ -23,6 +24,7 @@ export default {
   data() {
     return {
       league_id: this.$route.params.id,
+      leagueIndex: null
     }
   },
   methods: {
@@ -31,8 +33,27 @@ export default {
       if (splitRoundText[0] === "Regular Season") {
         return splitRoundText[1] ? parseInt(splitRoundText[1]) : null;
       } else {
-        return lastGame.round; // If cups get added to the app
+        return lastGame.lastgames[this.leagueIndex].round; // If cups get added to the app
       }
+    },
+    findLeagueIndex() {
+      if(this.lastgames.length) {
+        for (let i = 0; i < this.lastgames.length; i++) {
+          if(this.lastgames[i].leagueId == this.league_id) {
+            console.log(this.lastgames[i].leagueId);
+            this.leagueIndex = i;
+          }
+        }
+        return null;
+      }
+    }
+  },
+  created() {
+    this.findLeagueIndex();
+  },
+  watch: {
+    lastgames: function() {
+      this.findLeagueIndex();
     }
   }
 }
