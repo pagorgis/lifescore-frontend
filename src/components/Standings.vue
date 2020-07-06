@@ -36,7 +36,7 @@
       </tbody>
     </table>
   </div>
-  <div v-else>Loading</div>
+  <h3 v-else>Loading standings...</h3>
 </template>
 
 <script>

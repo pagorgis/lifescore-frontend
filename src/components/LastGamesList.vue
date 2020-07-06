@@ -6,10 +6,11 @@
           v-bind:lastgame="lastgame" 
           v-if="league_id == lastgame.leagueId && 
             extractRound(lastgames[leagueIndex].lastgames[0]) === extractRound(lastgame) &&
-            lastgame.status === 'Match Finished'" />
+            lastgame.status === 'Match Finished'" 
+        />
     </div>
   </div>
-  <div v-else>Not found</div>
+  <h3 v-else>Loading previous games...</h3>
 </template>
 
 <script>
@@ -33,7 +34,7 @@ export default {
       if (splitRoundText[0] === "Regular Season") {
         return splitRoundText[1] ? parseInt(splitRoundText[1]) : null;
       } else {
-        return lastGame.lastgames[this.leagueIndex].round; // If cups get added to the app
+        return lastGame.round; // If cups get added to the app
       }
     },
     findLeagueIndex() {

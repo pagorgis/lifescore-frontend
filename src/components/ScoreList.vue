@@ -1,5 +1,5 @@
 <template>
-  <div id="score-list">
+  <div id="score-list" v-if="livegames.length">
       <div v-bind:key="league" v-for="league in leagues">
         <h2 class="league-name">{{league}}</h2>
         <div v-bind:key="livegame.fixtureId" v-for="livegame in livegames">
@@ -7,6 +7,7 @@
         </div>
       </div>
   </div>
+  <h2 v-else>Loading live games...</h2>
 </template>
 
 <script>
