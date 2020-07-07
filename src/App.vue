@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    timerBoy() {
+    fetchAllData() {
       //setInterval(() => console.log("Tick"), 10000);
       fetch("http://localhost:3000/lastgames/test")
         .then(data => data.json())
@@ -77,13 +77,30 @@ export default {
         });
 
     },
+    fetchLiveGamesOnly: function() {
+      fetch("http://localhost:3000/livegames/test")
+        .then(data => data.json())
+        .then(jsondata => {
+          this.livegames = jsondata;
+          this.fetchingLiveGames = false;
+          console.log("tick");
+        })
+        .catch(err => {
+          console.log(err);
+          this.fetchingLiveGames = false;
+        });
+    },
     changeLeague: function(leagueId) {
       this.currentLeague = leagueId;
     }
   },
   created() {
-    this.timerBoy();
+    this.fetchAllData();
     this.changeLeague(parseInt(this.$route.params.id));
+    setInterval(() => {
+      this.fetchingLiveGames = true;
+      this.fetchLiveGamesOnly();
+    }, 60000);
   },
   watch: {
     $route(to, from) {
