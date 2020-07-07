@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 class="site-header"><router-link class="home-link" to="/">LIFESCORE</router-link></h1>
+    <h1 class="site-header"><router-link class="home-link" to="/" @click.native="changeLeague(null)">LIFESCORE</router-link></h1>
     <div class="leagues-container">
         <router-link to="/league/524" tag="img" :src="require('./assets/uk.png')" alt="Premier League" 
             :class="currentLeague === 524 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(524)"></router-link>
@@ -17,7 +17,9 @@
       :livegames="livegames" 
       :standings="standings"
       :lastgames="lastgames" 
-      :nextgames="nextgames" />
+      :nextgames="nextgames"
+      :fetchingLiveGames="fetchingLiveGames" 
+    />
   </div>
 </template>
 
@@ -31,7 +33,9 @@ export default {
       standings: [],
       nextgames: [],
       lastgames: [],
-      currentLeague: null
+      currentLeague: null,
+      fetchingLiveGames: true,
+
     }
   },
   methods: {
@@ -64,10 +68,13 @@ export default {
       fetch("http://localhost:3000/livegames/test")
         .then(data => data.json())
         .then(jsondata => {
-          
           this.livegames = jsondata;
+          this.fetchingLiveGames = false;
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          this.fetchingLiveGames = false;
+        });
 
     },
     changeLeague: function(leagueId) {
@@ -76,6 +83,14 @@ export default {
   },
   created() {
     this.timerBoy();
+    this.changeLeague(parseInt(this.$route.params.id));
+  },
+  watch: {
+    $route(to, from) {
+      if(to.params.id !== from.params.id) {
+        this.currentLeague = parseInt(this.$route.params.id);
+      }
+    }
   }
 }
 

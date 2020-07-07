@@ -26,7 +26,7 @@ export default {
     LiveGamesList,
     NextGamesList,
   },
-  props: ["standings", "livegames", "nextgames", "lastgames"],
+  props: ["standings", "livegames", "nextgames", "lastgames", "fetchingLiveGames"],
 }
 </script>
 

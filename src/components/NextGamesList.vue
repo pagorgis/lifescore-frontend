@@ -28,11 +28,13 @@ export default {
   },
   methods: {
     extractRound(nextGame) {
-      const splitRoundText = nextGame.round.split(' - ');
-      if (splitRoundText[0] === "Regular Season") {
-        return splitRoundText[1] ? parseInt(splitRoundText[1]) : null;
+      if (nextGame.round.includes(' - ')) {
+        const splitRoundText = nextGame.round.split(' - ');
+        if (splitRoundText[0] === "Regular Season") {
+          return splitRoundText[1] ? parseInt(splitRoundText[1]) : null;
+        }
       } else {
-        return nextGame.round; // If cups get added to the app
+        return "unknown"; // If cups get added to the app
       }
     },
     findLeagueIndex() {

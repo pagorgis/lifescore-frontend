@@ -1,6 +1,6 @@
 <template>
   <div id="livegames">
-    <ScoreList v-bind:livegames="livegames"/>
+    <ScoreList :livegames="livegames" :fetchingLiveGames="fetchingLiveGames" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   components: {
     ScoreList
   },
-  props: ["standings", "livegames", "nextgames", "lastgames"],
+  props: ["standings", "livegames", "nextgames", "lastgames", "fetchingLiveGames"],
 }
 </script>
 

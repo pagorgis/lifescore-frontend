@@ -5,7 +5,7 @@
         <LiveGamesListItem v-bind:livegame="livegame" v-if="league_id == livegame.leagueId" />
     </div>
   </div>
-  <h3 v-else>Loading live games...</h3>
+  <h2 class="no-live-games" v-else>There are no live games currently</h2>
 </template>
 
 <script>
@@ -33,5 +33,10 @@ export default {
 </script>
 
 <style scoped>
+
+  .no-live-games {
+    color: #FF4848;
+    text-decoration: underline;
+  }
 
 </style>

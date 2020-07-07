@@ -17,8 +17,8 @@
           <th class="desktop-only">Form</th>
         </tr>
       </thead>
-      <tbody v-bind:key="standing.teamId" v-for="standing in standings[findStandingsIndex()].standings">
-        <tr>
+      <tbody >
+        <tr v-bind:key="standing.teamId" v-for="standing in standings[findStandingsIndex()].standings">
           <td>{{ standing.rank }}</td>
           <td><img class="team-logo-table" v-bind:src="standing.teamLogo" v-bind:alt="standing.teamName"></td>
           <td>{{ standing.gamesPlayed }}</td>

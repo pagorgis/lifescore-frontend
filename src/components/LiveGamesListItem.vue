@@ -44,13 +44,12 @@ export default {
   .away-team-name, .away-team-side {
     text-align: right;
   }
-  .event-date {
-    width: 20%;
-  }
   .link-to-fixture {
     text-decoration: none;
     color: white;
     white-space: nowrap;
+    text-align: center;
+    width: 20%;
   }
 
   @media screen and (max-width: 768px) {

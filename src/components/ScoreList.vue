@@ -7,7 +7,8 @@
         </div>
       </div>
   </div>
-  <h2 v-else>Loading live games...</h2>
+  <h2 v-else-if="fetchingLiveGames">Loading live games...</h2>
+  <h2 v-else class="no-live-games">There are no live games currently...</h2>
 </template>
 
 <script>
@@ -18,7 +19,7 @@ export default {
   components: {
     ScoreListItem
   },
-  props: ["livegames"],
+  props: ["livegames", "fetchingLiveGames"],
   data() {
     return {
       leagues: []
@@ -50,6 +51,11 @@ export default {
 
   .league-name {
     margin: 0.2em;
+    text-decoration: underline;
+  }
+
+  .no-live-games {
+    color: #FF4848;
     text-decoration: underline;
   }
 

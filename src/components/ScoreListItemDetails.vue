@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h2 class="league-name">{{livegame_obj.leagueName}}</h2>
+    <div class="headers-flex">
+      <h2 class="back-button" @click="$router.go(-1)">X</h2>
+      <h2 class="league-name">{{livegame_obj.leagueName}}</h2>
+      <h3 class="empty-div"></h3>
+    </div>
     <div id="score-details">
         <h2 class="home-team-name">{{livegame_obj.homeTeam.teamName.toUpperCase()}}</h2>
         <h2 class="score-line">{{livegame_obj.goalsHomeTeam}}-{{livegame_obj.goalsAwayTeam}}<br><span class="elapsed">{{livegame_obj.elapsed}}'</span></h2>
@@ -66,13 +70,17 @@ export default {
 
 <style scoped>
 
-  #score-details, .event-details {
+  #score-details, .event-details, .headers-flex {
       display: flex !important;
       justify-content: space-between;
       width: 80%;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+  }
+  .headers-flex {
+    display: flex;
+    justify-content: space-between;
   }
   .event-details {
     margin-bottom: 0.5em;
@@ -83,6 +91,15 @@ export default {
   .league-name {
     margin: 0.2em;
     text-decoration: underline;
+    width: 60%;
+  }
+  .back-button {
+    width: 20%;
+    text-align: left;
+    margin: 0.2em;
+  }
+  .empty-div {
+    width: 20%;
   }
   .elapsed {
     color: #44D073;
@@ -112,7 +129,7 @@ export default {
   }
 
   @media screen and (max-width: 768px) {
-    #score-details, .event-details {
+    #score-details, .event-details, .headers-flex {
       width: 96%;
     }
     h3 {
