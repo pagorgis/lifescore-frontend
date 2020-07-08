@@ -41,7 +41,7 @@ export default {
   methods: {
     fetchAllData() {
       //setInterval(() => console.log("Tick"), 10000);
-      fetch("http://localhost:3000/lastgames/test")
+      fetch("http://localhost:3000/lastgames/")
         .then(data => data.json())
         .then(jsondata => {
           
@@ -49,7 +49,7 @@ export default {
         })
         .catch(err => console.log(err));
 
-      fetch("http://localhost:3000/standings/test")
+      fetch("http://localhost:3000/standings/")
         .then(data => data.json())
         .then(jsondata => {
           
@@ -57,7 +57,7 @@ export default {
         })
         .catch(err => console.log(err));
 
-      fetch("http://localhost:3000/nextgames/test")
+      fetch("http://localhost:3000/nextgames/")
         .then(data => data.json())
         .then(jsondata => {
 
@@ -65,7 +65,7 @@ export default {
         })
         .catch(err => console.log(err));
 
-      fetch("http://localhost:3000/livegames/test")
+      fetch("http://localhost:3000/livegames/")
         .then(data => data.json())
         .then(jsondata => {
           this.livegames = jsondata;
@@ -78,7 +78,7 @@ export default {
 
     },
     fetchLiveGamesOnly: function() {
-      fetch("http://localhost:3000/livegames/test")
+      fetch("http://localhost:3000/livegames/")
         .then(data => data.json())
         .then(jsondata => {
           this.livegames = jsondata;
@@ -100,7 +100,7 @@ export default {
     setInterval(() => {
       this.fetchingLiveGames = true;
       this.fetchLiveGamesOnly();
-    }, 60000);
+    }, 1000*60*3);
   },
   watch: {
     $route(to, from) {

@@ -13,7 +13,7 @@ export default {
   components: {
     ScoreListItemDetails
   },
-  props: ["livegames"]
+  props: ["standings", "livegames", "nextgames", "lastgames", "fetchingLiveGames"] // Only uses livegames and fetchingLiveGames
 }
 </script>
 

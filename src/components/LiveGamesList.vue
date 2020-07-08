@@ -5,7 +5,8 @@
         <LiveGamesListItem v-bind:livegame="livegame" v-if="league_id == livegame.leagueId" />
     </div>
   </div>
-  <h2 class="no-live-games" v-else>There are no live games currently</h2>
+  <h3 v-else-if="fetchingLiveGames">Loading live games...</h3>
+  <h2 v-else class="no-live-games">There are no live games currently...</h2>
 </template>
 
 <script>
@@ -16,7 +17,7 @@ export default {
   components: {
     LiveGamesListItem
   },
-  props: ["livegames"],
+  props: ["livegames", "fetchingLiveGames"],
   data() {
     return {
       league_id: this.$route.params.id,

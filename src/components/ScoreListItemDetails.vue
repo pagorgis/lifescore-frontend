@@ -97,6 +97,7 @@ export default {
     width: 20%;
     text-align: left;
     margin: 0.2em;
+    cursor: pointer;
   }
   .empty-div {
     width: 20%;

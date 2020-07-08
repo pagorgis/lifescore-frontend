@@ -39,13 +39,12 @@ export default {
   .away-team-name {
     text-align: right;
   }
-  .score-line {
-    width: 20%;
-  }
   .link-to-fixture {
     text-decoration: none;
     color: white;
     white-space: nowrap;
+    text-align: center;
+    width: 20%;
   }
 
   @media screen and (max-width: 768px) {
