@@ -23,6 +23,7 @@
   </div>
 </template>
 
+
 <script>
 
 export default {
@@ -40,11 +41,9 @@ export default {
   },
   methods: {
     fetchAllData() {
-      //setInterval(() => console.log("Tick"), 10000);
       fetch("http://localhost:3000/lastgames/")
         .then(data => data.json())
         .then(jsondata => {
-          
           this.lastgames = jsondata;
         })
         .catch(err => console.log(err));
@@ -52,7 +51,6 @@ export default {
       fetch("http://localhost:3000/standings/")
         .then(data => data.json())
         .then(jsondata => {
-          
           this.standings = jsondata;
         })
         .catch(err => console.log(err));
@@ -60,7 +58,6 @@ export default {
       fetch("http://localhost:3000/nextgames/")
         .then(data => data.json())
         .then(jsondata => {
-
           this.nextgames = jsondata;
         })
         .catch(err => console.log(err));
@@ -75,7 +72,6 @@ export default {
           console.log(err);
           this.fetchingLiveGames = false;
         });
-
     },
     fetchLiveGamesOnly: function() {
       fetch("http://localhost:3000/livegames/")
@@ -83,7 +79,6 @@ export default {
         .then(jsondata => {
           this.livegames = jsondata;
           this.fetchingLiveGames = false;
-          console.log("tick");
         })
         .catch(err => {
           console.log(err);
