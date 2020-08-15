@@ -9,6 +9,6 @@ Link to lifescore-api: [https://github.com/pagorgis/lifescore-api](https://githu
 ## Project setup
 ```
 npm install
-npm start OR node server.js
+npm run serve
 ```
 
