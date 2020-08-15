@@ -1,24 +1,12 @@
-# lifescore-frontend
+# lifescore-frontend by Paul Gorgis
+
+Hobby project in developing a website retrieving scores from my favourite football (soccer) leagues. Developed with Vue.js. Communicates with the lifescore-api to retrieve the data. Updates in intervals or on site refresh. Last updated 2020-08-15
+
+Link to lifescore-api: [Link](https://cli.vuejs.org/config/)
 
 ## Project setup
 ```
 npm install
+npm start OR node server.js
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
