@@ -41,28 +41,28 @@ export default {
   },
   methods: {
     fetchAllData() {
-      fetch("http://localhost:3000/lastgames/")
+      fetch("https://lifescore-api.herokuapp.com/lastgames/")
         .then(data => data.json())
         .then(jsondata => {
           this.lastgames = jsondata;
         })
         .catch(err => console.log(err));
 
-      fetch("http://localhost:3000/standings/")
+      fetch("https://lifescore-api.herokuapp.com/standings/")
         .then(data => data.json())
         .then(jsondata => {
           this.standings = jsondata;
         })
         .catch(err => console.log(err));
 
-      fetch("http://localhost:3000/nextgames/")
+      fetch("https://lifescore-api.herokuapp.com/nextgames/")
         .then(data => data.json())
         .then(jsondata => {
           this.nextgames = jsondata;
         })
         .catch(err => console.log(err));
 
-      fetch("http://localhost:3000/livegames/")
+      fetch("https://lifescore-api.herokuapp.com/livegames/")
         .then(data => data.json())
         .then(jsondata => {
           this.livegames = jsondata;
@@ -74,7 +74,7 @@ export default {
         });
     },
     fetchLiveGamesOnly: function() {
-      fetch("http://localhost:3000/livegames/")
+      fetch("https://lifescore-api.herokuapp.com/livegames/")
         .then(data => data.json())
         .then(jsondata => {
           this.livegames = jsondata;
