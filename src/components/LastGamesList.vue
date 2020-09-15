@@ -1,6 +1,7 @@
 <template>
   <div id="score-list" v-if="lastgames.length">
-    <h2><u>Finished games - round {{ extractRound(lastgames[leagueIndex].lastgames[0]) }}</u></h2>
+    <h2 v-if="!lastgames[leagueIndex].lastgames.length"><u>League has not started yet...</u></h2>
+    <h2 v-else><u>Finished games - round {{ extractRound(lastgames[leagueIndex].lastgames[0]) }}</u></h2>
     <div v-bind:key="lastgame.fixtureId" v-for="lastgame in lastgames[leagueIndex].lastgames">
         <LastGamesListItem 
           v-bind:lastgame="lastgame" 
@@ -46,6 +47,7 @@ export default {
             this.leagueIndex = i;
           }
         }
+        console.log(this.lastgames[this.leagueIndex].lastgames.length);
         return null;
       }
     }

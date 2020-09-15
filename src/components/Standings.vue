@@ -20,7 +20,7 @@
       <tbody >
         <tr v-bind:key="standing.teamId" v-for="standing in standings[findStandingsIndex()].standings">
           <td>{{ standing.rank }}</td>
-          <td><img class="team-logo-table" v-bind:src="standing.teamLogo" v-bind:alt="standing.teamName"></td>
+          <td class="logo-col"><img class="team-logo-table" v-bind:src="standing.teamLogo" v-bind:alt="standing.teamName"></td>
           <td>{{ standing.gamesPlayed }}</td>
           <td>{{ standing.wins }}</td>
           <td>{{ standing.draws }}</td>
@@ -98,6 +98,9 @@ export default {
   }
   th, td {
     font-size: 1.5em;
+  }
+  .logo-col {
+    height: 2.5em;
   }
   .team-logo-table {
     width: 2.5em;

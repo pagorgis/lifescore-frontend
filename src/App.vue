@@ -95,7 +95,7 @@ export default {
     setInterval(() => {
       this.fetchingLiveGames = true;
       this.fetchLiveGamesOnly();
-    }, 1000*60*3);
+    }, 1000*60*1);
   },
   watch: {
     $route(to, from) {
