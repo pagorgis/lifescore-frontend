@@ -1,10 +1,12 @@
 <template>
   <div id="score-list" v-if="nextgames.length">
-    <h2><u>Upcoming fixtures - round {{ extractRound(nextgames[leagueIndex].nextgames[0]) }}</u></h2>
+    <h2 v-if="!nextgames[leagueIndex].nextgames.length"><u>League has finished...</u></h2>
+    <h2 v-else><u>Upcoming fixtures - round {{ extractRound(nextgames[leagueIndex].nextgames[0]) }}</u></h2>
     <div v-bind:key="nextgame.fixtureId" v-for="nextgame in nextgames[leagueIndex].nextgames">
-        <NextGamesListItem v-bind:nextgame="nextgame" 
-        v-if="league_id == nextgame.leagueId && 
-        extractRound(nextgames[leagueIndex].nextgames[0]) === extractRound(nextgame)" 
+        <NextGamesListItem 
+          v-bind:nextgame="nextgame" 
+          v-if="league_id == nextgame.leagueId && 
+            extractRound(nextgames[leagueIndex].nextgames[0]) === extractRound(nextgame)" 
     />
     </div>
   </div>

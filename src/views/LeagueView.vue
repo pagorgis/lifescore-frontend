@@ -4,8 +4,8 @@
       <Standings v-bind:standings="standings" />
     </div>
     <div class="games-list">
-      <LastGamesList v-bind:lastgames="lastgames" />
       <LiveGamesList v-bind:livegames="livegames" v-bind:fetchingLiveGames="fetchingLiveGames" />
+      <LastGamesList v-bind:lastgames="lastgames" />
       <NextGamesList v-bind:nextgames="nextgames" />
     </div>
   </div>
