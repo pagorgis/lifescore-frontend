@@ -2,16 +2,16 @@
   <div id="app">
     <h1 class="site-header"><router-link class="home-link" to="/" @click.native="changeLeague(null)">LIFESCORE</router-link></h1>
     <div class="leagues-container">
-        <router-link to="/league/2790" tag="img" :src="require('./assets/uk.png')" alt="Premier League" 
-            :class="currentLeague === 2790 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(2790)"></router-link>
-        <router-link to="/league/2833" tag="img" :src="require('./assets/spain.png')" alt="Primera Division"
-            :class="currentLeague === 2833 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(2833)"></router-link>
-        <router-link to="/league/2857" tag="img" :src="require('./assets/italy.png')" alt="Serie A"
-            :class="currentLeague === 2857 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(2857)"></router-link>
-        <router-link to="/league/2755" tag="img" :src="require('./assets/germany.png')" alt="Bundesliga"
-            :class="currentLeague === 2755 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(2755)"></router-link>
-        <router-link to="/league/1329" tag="img" :src="require('./assets/sweden.png')" alt="Allsvenskan"
-            :class="currentLeague === 1329 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(1329)"></router-link>
+        <router-link to="/league/3456" tag="img" :src="require('./assets/uk.png')" alt="Premier League" 
+            :class="currentLeague === 3456 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(3456)"></router-link>
+        <router-link to="/league/3513" tag="img" :src="require('./assets/spain.png')" alt="Primera Division"
+            :class="currentLeague === 3513 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(3513)"></router-link>
+        <router-link to="/league/3576" tag="img" :src="require('./assets/italy.png')" alt="Serie A"
+            :class="currentLeague === 3576 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(3576)"></router-link>
+        <router-link to="/league/3510" tag="img" :src="require('./assets/germany.png')" alt="Bundesliga"
+            :class="currentLeague === 3510 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(3510)"></router-link>
+        <router-link to="/league/3176" tag="img" :src="require('./assets/sweden.png')" alt="Allsvenskan"
+            :class="currentLeague === 3176 ? 'league-img active-league' : 'league-img'" @click.native="changeLeague(3176)"></router-link>
     </div>
     <router-view
       :livegames="livegames" 
